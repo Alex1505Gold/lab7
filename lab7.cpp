@@ -37,7 +37,9 @@ Queue_element pop_q(Queue_struct& q)
 {
     int a = q.q_begin->value;
     Queue_element rez;
+    Queue_element* del = q.q_begin;
     q.q_begin = q.q_begin->qe_next;
+    delete del;
     rez.value = a;
     rez.qe_next = q.q_begin;
     return rez;
