@@ -35,7 +35,9 @@ Stack_element pop_st(Stack_struct& st)
 {
     int a = st.st_end->value;
     Stack_element rez;
+    Stack_element* del = st.st_end;
     st.st_end = st.st_end->ste_prev;
+    delete del;
     rez.value = a;
     rez.ste_prev = st.st_end;
     return rez;
