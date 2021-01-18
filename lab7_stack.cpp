@@ -8,7 +8,6 @@ struct Stack_element
 
 struct Stack_struct
 {
-    Stack_element* st_begin;
     Stack_element* st_end;
 };
 
@@ -21,11 +20,10 @@ void push_st(Stack_struct& st, Stack_element& n)
 {
     Stack_element* newSt_e = new Stack_element;
     newSt_e->value = n.value;
-    if (st.st_begin == nullptr) {
-        st.st_begin = newSt_e;
+    if (st.st_end == nullptr) {
         st.st_end = newSt_e;
     }
-    else if (st.st_begin != nullptr) {
+    else if (st.st_end != nullptr) {
         newSt_e->ste_prev = st.st_end;
         st.st_end = newSt_e;
     }
@@ -45,7 +43,7 @@ Stack_element pop_st(Stack_struct& st)
 
 unsigned int size_st(Stack_struct& st)
 {
-    Stack_element* current = new Stack_element;
+    Stack_element* current;
     current = st.st_end;
     unsigned int counter = 0;
     while (current != nullptr) {
