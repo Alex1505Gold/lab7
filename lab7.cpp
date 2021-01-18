@@ -47,7 +47,7 @@ Queue_element pop_q(Queue_struct& q)
 
 unsigned int size_q(Queue_struct& q)
 {
-    Queue_element* current = new Queue_element;
+    Queue_element* current;
     current = q.q_begin;
     unsigned int counter = 0;
     while (current != nullptr) {
@@ -58,16 +58,19 @@ unsigned int size_q(Queue_struct& q)
     return counter;
 }
 
+void print_elem(Queue_element* q)
+{
+    if (q != nullptr)
+    {
+        std::cout << q->value << " ";
+        print_elem(q->qe_next);
+    }
+}
+
 void print_q(Queue_struct& q)
 {
-    Queue_element* current = new Queue_element;
-    current = q.q_begin;
-    while (current != nullptr) {
-        std::cout << current->value << " ";
-        current = current->qe_next;
-    }
+    print_elem(q.q_begin);
     std::cout << std::endl;
-    delete current;
 }
 
 void del_elem(Queue_element* q)
